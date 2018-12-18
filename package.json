@@ -1,6 +1,6 @@
 {
 	"name": "jest-transform-svelte",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "Jest Transformer for Svelte components",
 	"main": "index.js",
 	"scripts": {
