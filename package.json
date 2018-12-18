@@ -1,0 +1,29 @@
+{
+	"name": "jest-transform-svelte",
+	"version": "0.0.0",
+	"description": "Jest Transformer for Svelte components",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/rspieker/jest-transform-svelte.git"
+	},
+	"bugs": {
+		"url": "https://github.com/rspieker/jest-transform-svelte/issues"
+	},
+	"keywords": [
+		"jest",
+		"svelte",
+		"transform"
+	],
+	"author": "Rogier Spieker <rogier+npm@konfirm.eu>",
+	"license": "MIT",
+	"dependencies": {
+		"deasync": "^0.1.14",
+		"rollup": "^0.68.0",
+		"rollup-plugin-svelte": "^5.0.0",
+		"svelte": "^2.16.0"
+	}
+}
