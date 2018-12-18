@@ -11,8 +11,8 @@ Simply add the component to the [Jest transform configuration](https://jestjs.io
 
 ```
 transform: {
-		...
-		'^.+\\.svelte$': 'jest-transform-svelte'
+	...
+	'^.+\\.svelte$': 'jest-transform-svelte'
 },
 ```
 
