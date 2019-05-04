@@ -21,9 +21,10 @@
 	"author": "Rogier Spieker <rogier+npm@konfirm.eu>",
 	"license": "MIT",
 	"dependencies": {
-		"deasync": "^0.1.14",
-		"rollup": "^0.68.0",
-		"rollup-plugin-svelte": "^5.0.0",
-		"svelte": "^2.16.0"
+		"deasync": "^0.1.15",
+		"rollup": "^1.11.1",
+		"rollup-plugin-node-resolve": "^4.2.3",
+		"rollup-plugin-svelte": "^5.0.3",
+		"svelte": "^3.1.0"
 	}
 }

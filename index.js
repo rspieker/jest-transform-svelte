@@ -1,6 +1,6 @@
-const Path = require('path');
 const deasync = require('deasync');
 const rollup = require('rollup');
+const resolve = require('rollup-plugin-node-resolve');
 const svelte = require('rollup-plugin-svelte');
 
 exports.process = (...args) => {
@@ -8,9 +8,11 @@ exports.process = (...args) => {
 	const compiled = {};
 
 	rollup
-		.rollup({ input, plugins: [svelte()] })
+		.rollup({ input, plugins: [svelte(), resolve()] })
 		.then((bundle) => bundle.generate({ format: 'cjs', sourcemap: true }))
-		.then((result) => Object.assign(compiled, result))
+		.then(({ output }) => output
+			.reduce((carry, record) => Object.assign(carry, record), compiled)
+		)
 		.catch((error) => {
 			throw error;
 		});
