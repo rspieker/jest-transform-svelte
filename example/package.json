@@ -1,0 +1,25 @@
+{
+	"name": "example",
+	"version": "0.0.0",
+	"description": "",
+	"main": "babel.config.js",
+	"directories": {
+		"test": "test"
+	},
+	"scripts": {
+		"test": "./node_modules/.bin/jest --verbose"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/core": "^7.2.2",
+		"@babel/preset-env": "^7.2.0",
+		"babel-core": "^7.0.0-bridge.0",
+		"babel-jest": "^24.7.1",
+		"jest": "^24.7.1",
+		"jest-transform-svelte": "^2.0.0",
+		"svelte": "^3.1.0",
+		"svelte-jest": "^0.2.0"
+	}
+}

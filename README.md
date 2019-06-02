@@ -1,12 +1,15 @@
 # Jest Transformer for Svelte 3
+
 In order to unit test [Svelte](https://svelte.dev) components with the [Jest](https://jestjs.io) test framework, you need to use a transformer to ensure the Svelte component properly resolves its own component dependencies.
 
 # Installation
+
 ```
 $ npm install --save-dev jest-transform-svelte
 ```
 
 ## Svelte 2
+
 If you are using Svelte 2, please use version 1 of `jest-transform-svelte`
 
 ```
@@ -14,6 +17,7 @@ $ npm install --save-dev jest-transform-svelte@1
 ```
 
 # Usage
+
 Simply add the component to the [Jest transform configuration](https://jestjs.io/docs/en/configuration#transform-object-string-string)
 
 ```
@@ -23,11 +27,15 @@ transform: {
 },
 ```
 
-# Known issues
-- Sometimes it may be beneficial to give components a little time to complete their task before testing the outcome by adding a `requestAnimationFrame` (or `setTimeout`) around the `expect` in your tests
-- The reported paths in the coverage summary may become lengthy
-- The exclusing of modules may not work correctly, if this happens it may be because the `babel-plugin-istanbul` is active, which overrides your configuration (as it is a dependency to `babel-jest`), refer to the [related issue](https://jestjs.io/docs/en/troubleshooting#coveragepathignorepatterns-seems-to-not-have-any-effect)
+# Example
 
+A sample project is available in the [example](example/README.md) directory.
+
+# Known issues
+
+-   Sometimes it may be beneficial to give components a little time to complete their task before testing the outcome by adding a `requestAnimationFrame` (or `setTimeout`) around the `expect` in your tests
+-   The reported paths in the coverage summary may become lengthy
+-   The exclusing of modules may not work correctly, if this happens it may be because the `babel-plugin-istanbul` is active, which overrides your configuration (as it is a dependency to `babel-jest`), refer to the [related issue](https://jestjs.io/docs/en/troubleshooting#coveragepathignorepatterns-seems-to-not-have-any-effect)
 
 # License
 
