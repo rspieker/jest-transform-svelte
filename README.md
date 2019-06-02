@@ -29,7 +29,7 @@ transform: {
 
 # Example
 
-A sample project is available in the [example](example/README.md) directory.
+A sample project is available in the [example](example) directory.
 
 # Known issues
 
