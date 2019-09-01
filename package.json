@@ -20,6 +20,9 @@
 	],
 	"author": "Rogier Spieker <rogier+npm@konfirm.eu>",
 	"license": "MIT",
+	"peerDependencies": {
+		"svelte": ">= 3"
+	},
 	"devDependencies": {
 		"eslint": "^6.3.0",
 		"eslint-config-prettier": "^6.1.0",
