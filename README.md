@@ -27,6 +27,21 @@ transform: {
 },
 ```
 
+## Preprocessors
+
+If your components use pre-processors (like Typescript or Pug), you'll want to tell `jest-transform-svelte`
+about them. Simply pass the same preprocessor configuration you're using for Webpack or Rollup as
+and optional second argument:
+
+```javascript
+const sveltePreprocess = require('svelte-preprocess');
+
+transform: {
+	...
+  '^.+\\.svelte$': ['jest-transform-svelte', { preprocess: sveltePreprocess() }]
+},
+```
+
 # Example
 
 A sample project is available in the [example](example) directory.

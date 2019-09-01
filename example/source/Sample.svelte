@@ -2,9 +2,9 @@
 
 <svelte:options accessors="{ true }" />
 
-<script>
+<script lang="typescript">
 	//  internal click counter
-	let clicks = 0;
+	let clicks: number = 0;
 	//  allow for text overrides
 	export let text = '';
 

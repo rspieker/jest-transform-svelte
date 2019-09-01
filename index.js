@@ -1,16 +1,31 @@
 const svelte = require('svelte/compiler');
+const deasync = require('deasync');
 
 const process = (options = {}) => (source, filename) => {
-	// strip out <style> tags to prevent errors when unable to parse PostCSS etc.
-	const re = /<style[^>]*>[\S\s]*?<\/style>/g;
-	const normalized = source.replace(re, '');
+	const { preprocess } = options;
 
-	const result = svelte.compile(normalized, {
-		...options,
-		filename,
-		accessors: true,
-		dev: true,
-		css: false,
+	let preprocessed;
+
+	if (preprocess) {
+		svelte
+			.preprocess(source, preprocess || {}, {
+				filename
+			})
+			.then((result) => (preprocessed = result.code));
+
+		deasync.loopWhile(() => !preprocessed);
+	} else {
+		preprocessed = source;
+	}
+
+	const compiled = svelte.compile(preprocessed, {
+    filename,
+    css: false,
+    // Allow tests to set component props.
+    accessors: true,
+    // Debugging and runtime checks
+    dev: true,
+    // Emit CommonJS that Jest can understand.
 		format: 'cjs'
 	});
 
@@ -19,8 +34,8 @@ const process = (options = {}) => (source, filename) => {
 		'Object.defineProperty(exports, "__esModule", { value: true });';
 
 	return {
-		code: result.js.code + esInterop,
-		map: result.js.map
+		code: compiled.js.code + esInterop,
+		map: compiled.js.map
 	};
 };
 

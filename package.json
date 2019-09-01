@@ -23,6 +23,9 @@
 	"peerDependencies": {
 		"svelte": ">= 3"
 	},
+	"dependencies": {
+		"deasync": "^0.1.15"
+	},
 	"devDependencies": {
 		"eslint": "^6.3.0",
 		"eslint-config-prettier": "^6.1.0",
