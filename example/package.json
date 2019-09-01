@@ -19,7 +19,6 @@
 		"babel-jest": "^24.7.1",
 		"jest": "^24.7.1",
 		"jest-transform-svelte": "^2.0.0",
-		"svelte": "^3.1.0",
-		"svelte-jest": "^0.2.0"
+		"svelte": "^3.1.0"
 	}
 }
