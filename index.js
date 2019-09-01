@@ -1,23 +1,17 @@
-const deasync = require('deasync');
-const rollup = require('rollup');
-const resolve = require('rollup-plugin-node-resolve');
-const svelte = require('rollup-plugin-svelte');
+const svelte = require('svelte/compiler');
 
-exports.process = (...args) => {
-	const [, input] = args;
-	const compiled = {};
+const process = (options = {}) => (source, filename, ...args) => {
+	const result = svelte.compile(source, {
+		...options,
+		filename,
+		format: 'cjs'
+	});
 
-	rollup
-		.rollup({ input, plugins: [svelte(), resolve()] })
-		.then((bundle) => bundle.generate({ format: 'cjs', sourcemap: true }))
-		.then(({ output }) => output
-			.reduce((carry, record) => Object.assign(carry, record), compiled)
-		)
-		.catch((error) => {
-			throw error;
-		});
+	return result.js;
+};
 
-	deasync.loopWhile(() => !compiled.code && !compiled.map);
-
-	return compiled;
+exports.createTransformer = (options) => {
+	return {
+		process: process(options)
+	};
 };
