@@ -42,6 +42,19 @@ transform: {
 },
 ```
 
+## Debugging
+
+If your Svelte files aren't compiling correctly (maybe you're getting a `ParseError: Identifier is expected` error), you can try debugging the problem by setting the `debug` flag to print the compiled version of every processed component.
+
+```javascript
+transform: {
+	...
+  '^.+\\.svelte$': ['jest-transform-svelte', { debug: true }]
+},
+```
+
+After setting the flag, you can run `jest --no-cache` to make sure Jest re-runs the transformer on every file.
+
 # Example
 
 A sample project is available in the [example](example) directory.

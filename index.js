@@ -2,7 +2,7 @@ const svelte = require('svelte/compiler');
 const deasync = require('deasync');
 
 const process = (options = {}) => (source, filename) => {
-	const { preprocess } = options;
+	const { preprocess, debug } = options;
 
 	let preprocessed;
 
@@ -19,13 +19,13 @@ const process = (options = {}) => (source, filename) => {
 	}
 
 	const compiled = svelte.compile(preprocessed, {
-    filename,
-    css: false,
-    // Allow tests to set component props.
-    accessors: true,
-    // Debugging and runtime checks
-    dev: true,
-    // Emit CommonJS that Jest can understand.
+		filename,
+		css: false,
+		// Allow tests to set component props.
+		accessors: true,
+		// Debugging and runtime checks
+		dev: true,
+		// Emit CommonJS that Jest can understand.
 		format: 'cjs'
 	});
 
@@ -33,8 +33,14 @@ const process = (options = {}) => (source, filename) => {
 	const esInterop =
 		'Object.defineProperty(exports, "__esModule", { value: true });';
 
+	const code = compiled.js.code + esInterop;
+
+	if (debug) {
+		console.log(code);
+	}
+
 	return {
-		code: compiled.js.code + esInterop,
+		code,
 		map: compiled.js.map
 	};
 };
