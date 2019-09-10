@@ -1,14 +1,19 @@
 const svelte = require('svelte/compiler');
 const deasync = require('deasync');
 
-const process = (options = {}) => (source, filename) => {
-	const { preprocess, debug } = options;
+const styleRegex = /<style[^>]*>[\S\s]*?<\/style>/g;
 
+const process = (options = {}) => (source, filename) => {
+	const { preprocess, debug, compilerOptions, noStyles } = options;
+
+  // strip out <style> tags to prevent errors with node-sass.
+  const normalized = noStyles !== false ? source.replace(styleRegex, '') : source;
+  
 	let preprocessed;
 
 	if (preprocess) {
 		svelte
-			.preprocess(source, preprocess || {}, {
+			.preprocess(normalized, preprocess || {}, {
 				filename
 			})
 			.then((result) => (preprocessed = result.code));
@@ -26,7 +31,8 @@ const process = (options = {}) => (source, filename) => {
 		// Debugging and runtime checks
 		dev: true,
 		// Emit CommonJS that Jest can understand.
-		format: 'cjs'
+		format: 'cjs',
+		...compilerOptions
 	});
 
 	// Fixes the '_Sample.default is not a constructor' error when importing in Jest.

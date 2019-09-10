@@ -1,6 +1,15 @@
-<span on:click="{ updateClicks }" data-clicks="{ clicks }" data-length="{ length }">{ text }</span>
+<span class="test" on:click="{ updateClicks }" data-clicks="{ clicks }" data-length="{ length }">{ text }</span>
 
 <svelte:options accessors="{ true }" />
+
+<style type="text/scss">
+  .test {
+    color: blue;
+    &:hover {
+      color: black;
+    }
+  }
+</style>
 
 <script lang="typescript">
 	//  internal click counter

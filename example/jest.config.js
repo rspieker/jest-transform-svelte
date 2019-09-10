@@ -6,8 +6,10 @@ module.exports = {
 		'^.+\\.svelte$': [
 			'jest-transform-svelte',
 			{
-        preprocess: sveltePreprocess(),
-        debug: false
+				preprocess: sveltePreprocess(),
+				debug: false,
+				noStyles: true,
+				compilerOptions: {}
 			}
 		]
 	},
