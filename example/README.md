@@ -17,6 +17,7 @@ The file structure is simple
 The example directory serves as a very basic project setup. If you have the repository cloned, you should be able to enter the example directory and install the packages:
 
 ```
+$ npm install
 $ cd example
 $ npm install
 ```
