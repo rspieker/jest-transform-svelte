@@ -1,10 +1,19 @@
-<span on:click="{ updateClicks }" data-clicks="{ clicks }" data-length="{ length }">{ text }</span>
+<span class="test" on:click="{ updateClicks }" data-clicks="{ clicks }" data-length="{ length }">{ text }</span>
 
 <svelte:options accessors="{ true }" />
 
-<script>
+<style type="text/scss">
+  .test {
+    color: blue;
+    &:hover {
+      color: black;
+    }
+  }
+</style>
+
+<script lang="typescript">
 	//  internal click counter
-	let clicks = 0;
+	let clicks: number = 0;
 	//  allow for text overrides
 	export let text = '';
 
