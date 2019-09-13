@@ -14,6 +14,7 @@ module.exports = {
 		]
 	},
 	moduleFileExtensions: ['js', 'svelte'],
+	coverageReporters: ['html'],
 	bail: false,
 	verbose: false
 };

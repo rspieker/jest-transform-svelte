@@ -7,7 +7,8 @@
 		"test": "test"
 	},
 	"scripts": {
-		"test": "./node_modules/.bin/jest --verbose"
+		"test": "./node_modules/.bin/jest --verbose",
+		"test:coverage": "./node_modules/.bin/jest --verbose --coverage"
 	},
 	"keywords": [],
 	"author": "",
