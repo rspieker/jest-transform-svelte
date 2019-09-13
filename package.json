@@ -19,6 +19,9 @@
 		"transform"
 	],
 	"author": "Rogier Spieker <rogier+npm@konfirm.eu>",
+	"contributors": [
+		"Will Ockelmann-Wagner <wow@carbonfive.com> (https://github.com/will-wow)"
+	],
 	"license": "MIT",
 	"peerDependencies": {
 		"svelte": ">= 3"
