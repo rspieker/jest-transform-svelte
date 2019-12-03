@@ -20,7 +20,7 @@ const process = (options = {}) => (source, filename) => {
 
 		deasync.loopWhile(() => !preprocessed);
 	} else {
-		preprocessed = source;
+		preprocessed = normalized;
 	}
 
 	const compiled = svelte.compile(preprocessed, {
