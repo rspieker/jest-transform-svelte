@@ -27,7 +27,7 @@
 		"svelte": ">= 3"
 	},
 	"dependencies": {
-		"deasync": "^0.1.15"
+		"deasync": "^0.1.19"
 	},
 	"devDependencies": {
 		"eslint": "^6.3.0",
