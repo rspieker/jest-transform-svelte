@@ -20,7 +20,9 @@
 	],
 	"author": "Rogier Spieker <rogier+npm@konfirm.eu>",
 	"contributors": [
-		"Will Ockelmann-Wagner <wow@carbonfive.com> (https://github.com/will-wow)"
+		"Will Ockelmann-Wagner <wow@carbonfive.com> (https://github.com/will-wow)",
+		"Sindre Johansen <sindre@sindrejohansen.no> (https://github.com/sindreij)",
+		"Andrii Ponamarov <ponamarevandrej@gmail.com> (https://github.com/andrey-ponamarev)"
 	],
 	"license": "MIT",
 	"peerDependencies": {
