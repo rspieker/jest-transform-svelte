@@ -6,8 +6,9 @@ const styleRegex = /<style[^>]*>[\S\s]*?<\/style>/g;
 const process = (options = {}) => (source, filename) => {
 	const { preprocess, debug, compilerOptions, noStyles } = options;
 
-  // strip out <style> tags to prevent errors with node-sass.
-  const normalized = noStyles !== false ? source.replace(styleRegex, '') : source;
+	// strip out <style> tags to prevent errors with node-sass.
+	const normalized =
+		noStyles !== false ? source.replace(styleRegex, '') : source;
 
 	let preprocessed;
 
@@ -17,13 +18,13 @@ const process = (options = {}) => (source, filename) => {
 				filename
 			})
 			.then((result) => (preprocessed = result.code))
-			.catch(err => {
+			.catch((err) => {
 				preprocessed = true;
 				throw err;
 			});
 
-	    while (!preprocessed) {
-	        deasync.runLoopOnce();
+		while (!preprocessed) {
+			deasync.runLoopOnce();
 		}
 	} else {
 		preprocessed = normalized;
