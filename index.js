@@ -8,7 +8,7 @@ const process = (options = {}) => (source, filename) => {
 
   // strip out <style> tags to prevent errors with node-sass.
   const normalized = noStyles !== false ? source.replace(styleRegex, '') : source;
-  
+
 	let preprocessed;
 
 	if (preprocess) {
@@ -16,9 +16,15 @@ const process = (options = {}) => (source, filename) => {
 			.preprocess(normalized, preprocess || {}, {
 				filename
 			})
-			.then((result) => (preprocessed = result.code));
+			.then((result) => (preprocessed = result.code))
+			.catch(err => {
+				preprocessed = true;
+				throw err;
+			});
 
-		deasync.loopWhile(() => !preprocessed);
+	    while (!preprocessed) {
+	        deasync.runLoopOnce();
+		}
 	} else {
 		preprocessed = normalized;
 	}
