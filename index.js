@@ -1,31 +1,33 @@
 const svelte = require('svelte/compiler');
-const deasync = require('deasync');
+const { execSync } = require('child_process');
 
 const styleRegex = /<style[^>]*>[\S\s]*?<\/style>/g;
 
-const process = (options = {}) => (source, filename) => {
-	const { preprocess, debug, compilerOptions, noStyles } = options;
+const transform = (options = {}) => (source, filename) => {
+	const {
+		preprocess,
+		debug,
+		compilerOptions,
+		noStyles
+	} = options;
 
+	console.log(preprocess);
 	// strip out <style> tags to prevent errors with node-sass.
-	const normalized =
-		noStyles !== false ? source.replace(styleRegex, '') : source;
+	const normalized = noStyles !== false ? source.replace(styleRegex, '') : source;
 
 	let preprocessed;
 
 	if (preprocess) {
-		svelte
-			.preprocess(normalized, preprocess || {}, {
-				filename
-			})
-			.then((result) => (preprocessed = result.code))
-			.catch((err) => {
-				preprocessed = true;
-				throw err;
-			});
-
-		while (!preprocessed) {
-			deasync.runLoopOnce();
-		}
+		const preprocessor = require.resolve('./preprocess.js');
+		preprocessed = execSync(`node --unhandled-rejections=strict --abort-on-uncaught-exception "${preprocessor}"`, {
+			env: {
+				PATH: process.env.PATH,
+				source: normalized,
+				filename,
+				config: JSON.stringify(preprocess)
+			},
+			maxBuffer: 10 * 1024 * 1024
+		}).toString();
 	} else {
 		preprocessed = normalized;
 	}
@@ -60,6 +62,7 @@ const process = (options = {}) => (source, filename) => {
 
 exports.createTransformer = (options) => {
 	return {
-		process: process(options)
+		process: transform(options)
 	};
 };
+
