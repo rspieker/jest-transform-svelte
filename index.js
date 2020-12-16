@@ -11,7 +11,6 @@ const transform = (options = {}) => (source, filename) => {
 		noStyles
 	} = options;
 
-	console.log(preprocess);
 	// strip out <style> tags to prevent errors with node-sass.
 	const normalized = noStyles !== false ? source.replace(styleRegex, '') : source;
 
