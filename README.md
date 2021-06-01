@@ -21,7 +21,7 @@ transform: {
 		'@oat-sa/jest-transform-svelte',
 		{
 			compilerOptions: { dev: false },
-			preprocess: [sveltePreprocess({ postcss: true })]
+			preprocess: sveltePreprocess({ postcss: true })
 		}
 	]
 }
