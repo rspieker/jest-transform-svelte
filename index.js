@@ -97,9 +97,6 @@ module.exports = {
                         configFile: false,
                         inputSourceMap: compiled.js.map,
                         sourceMaps: true,
-                        targets: {
-                            node: 'current'
-                        },
                         compact: false,
                         plugins: [['babel-plugin-dynamic-import-node', { esInterop: true }]]
                     });
@@ -143,9 +140,6 @@ module.exports = {
                                 configFile: false,
                                 inputSourceMap: compiled.js.map,
                                 sourceMaps: true,
-                                targets: {
-                                    node: 'current'
-                                },
                                 compact: false,
                                 plugins: [['babel-plugin-dynamic-import-node', { esInterop: true }]]
                             }).then(output => ({
