@@ -2,8 +2,8 @@
 
 Forked from [rspieker/jest-transform-svelte](https://github.com/rspieker/jest-transform-svelte).
 
-It transforms Svelte files to files Jest can use for testing.
-It comes with Svelte preprocessing, styles skipping and dynamic import support.
+It transforms Svelte files to javascript for jest.
+It comes with Svelte preprocessing, styles skipping, dynamic import and ESM support.
 
 ## Installation
 
@@ -13,7 +13,7 @@ npm install --save-dev @oat-sa/jest-transform-svelte
 
 ## Configuration
 
-Simply add the component to the [Jest transform configuration](https://jestjs.io/docs/en/configuration#transform-object-string-string)
+Simply add the component to the [jest transform configuration](https://jestjs.io/docs/en/configuration#transform-object-string-string)
 
 ```
 transform: {
@@ -31,6 +31,7 @@ The transformer supports the following options:
 
  - `compilerOptions`: Svelte compiler options
  - `preprocess`: Svelte preprocessor
+ - `noStyles`: wether to keep or not the `<style>` part of the component
 
 # LICENSE
 
