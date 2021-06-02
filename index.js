@@ -3,7 +3,7 @@ const { execSync } = require('child_process');
 const { transformSync, transform } = require('@babel/core');
 
 const styleRegex = /<style[^>]*>[\S\s]*?<\/style>/g;
-const dynImportRegex = /import\(/g;
+const dynImportRegex = /\bimport\(/g;
 const cwd = __dirname;
 
 // Fixes the '_Sample.default is not a constructor' error when importing in Jest.
