@@ -1,41 +1,41 @@
 {
-	"name": "jest-transform-svelte",
-	"version": "2.1.1",
-	"description": "Jest Transformer for Svelte components",
+	"name": "@oat-sa/jest-transform-svelte",
+	"version": "0.1.0",
+	"description": "Jest Transformer for Svelte",
 	"main": "index.js",
+	"files": [
+		"index.js",
+		"preprocess.js"
+	],
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"lint": "eslint *.js"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/rspieker/jest-transform-svelte.git"
+		"url": "https://github.com/oat-sa/jest-transform-svelte.git"
 	},
 	"bugs": {
-		"url": "https://github.com/rspieker/jest-transform-svelte/issues"
+		"url": "https://github.com/oat-sa/jest-transform-svelte/issues"
 	},
 	"keywords": [
 		"jest",
 		"svelte",
 		"transform"
 	],
-	"author": "Rogier Spieker <rogier+npm@konfirm.eu>",
-	"contributors": [
-		"Will Ockelmann-Wagner <wow@carbonfive.com> (https://github.com/will-wow)",
-		"Sindre Johansen <sindre@sindrejohansen.no> (https://github.com/sindreij)",
-		"Andrii Ponamarov <ponamarevandrej@gmail.com> (https://github.com/andrey-ponamarev)"
-	],
+	"author": "Open Assessment Technologies SA",
 	"license": "MIT",
 	"peerDependencies": {
 		"svelte": ">= 3"
 	},
 	"dependencies": {
-		"deasync": "^0.1.19"
+		"babel-plugin-dynamic-import-node": "^2.3.3"
 	},
 	"devDependencies": {
-		"eslint": "^6.3.0",
-		"eslint-config-prettier": "^6.1.0",
-		"eslint-plugin-prettier": "^3.1.0",
+		"@babel/core": "^7.14.3",
+		"@oat-sa/eslint-config-tao": "^1.1.1",
+		"@oat-sa/prettier-config": "^0.1.1",
+		"eslint": "^7.27.0",
 		"prettier": "^1.18.2",
-		"svelte": "^3.1.0"
+		"svelte": "^3.32.3"
 	}
 }
