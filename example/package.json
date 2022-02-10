@@ -20,7 +20,7 @@
 		"babel-jest": "^24.7.1",
 		"jest": "^24.7.1",
 		"jest-transform-svelte": "file:..",
-		"node-sass": "^4.12.0",
+		"node-sass": "^7.0.0",
 		"svelte": "^3.1.0",
 		"svelte-preprocess": "^3.0.2",
 		"typescript": "^3.6.2"
